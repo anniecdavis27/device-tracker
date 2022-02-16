@@ -10,7 +10,7 @@ color: ${(props) => (props.isDragging ? "#fff" : "#3a3a3a")};
 background-color: ${(props) => (props.isDragging ? "#FF8700" : "#fff")};
 box-shadow: 3px 3px 10px #c9c9c9;
 &:hover {
-    background-color: #05D1D0;
+    background-color: #ff88007b;
     transition: ease-in-out .3s;
 }
 `;

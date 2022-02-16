@@ -3,6 +3,25 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Column from "./Column";
 
+const Button = styled.button`
+    margin: 30px 0 0 30px;
+    padding: 12px 20px;
+    border-radius: 100px;
+    background-color: #FF8700;
+    border: 3px solid #FF8700;
+    color: #fff;
+    font-size: 18px;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #fff;
+        color: #FF8700;
+        transition: ease-in-out .2s;
+    }
+`;
+
+
 //variable to create log for when the status of a device changes
 let log = [];
 
@@ -11,7 +30,9 @@ function Board({ data }) {
 
   let handleToggle = (e) => {
     e.preventDefault()
-    setActive(!isActive);
+      if (log.length > 0) {
+        setActive(!isActive);
+      }
   };
 
   //function to give all devices from API an id
@@ -156,7 +177,7 @@ function Board({ data }) {
           )}
         </Droppable>
       </DragDropContext>
-      <button onClick={handleToggle}>{isActive ? "Hide" : "Show "} Device Tracking History</button>
+      <Button onClick={handleToggle} className={log.length <= 0 ? 'btn-inactive' : null}>{isActive ? "Hide" : "Show "} History</Button>
       {isActive ? (
         <ul>
           {log.map((item) => {
